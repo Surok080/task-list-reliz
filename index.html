@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task List</title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<!-- Загрузочный экран -->
+	<div class="load">
+		<div class="cssload-dots">
+			<div class="cssload-dot"></div>
+			<div class="cssload-dot"></div>
+			<div class="cssload-dot"></div>
+			<div class="cssload-dot"></div>
+			<div class="cssload-dot"></div>
+		</div>
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<filter id="goo">
+					<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"></feGaussianBlur>
+					<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7" result="goo">
+					</feColorMatrix>
+					<!--<feBlend in2="goo" in="SourceGraphic" result="mix" ></feBlend>-->
+				</filter>
+			</defs>
+		</svg>
+	</div>
+	<!-- /Загрузочный экран -->
+
+	<div class="container">
+
+		<!-- Область задач с известным исполнителем -->
+		<div class="task">
+
+			<!-- Кнопки управления навигацией -->
+			<div class="button">
+				<button class="button-nav">
+					< </button>
+						<button class="button-nav">Текущая дата:</button>
+						<button class="button-nav">></button>
+						<button class="btn-info">FAQ <span class="btn-info-span">
+								<b>Задачу из списка можно назначить:</b> <br>
+								- Перетащив в конкретную дату пользователю; <br>
+								- Перетащив пользователю и не выбрав даты, задача добавляется соотвествующему пользователю на даты заложенные в задче; <br>
+								- Перетащив пользователю и выбрав самостоятельно дату начала и дату завершения задачи; <br>
+								- Нажав один раз на задачу и в появившемся окне выбрать исполнителя, дату начала и дату
+								завершения задачи; <br>
+								- При использовании на мобилльных устройствах, нажать одним пальцем на задачу из списка и в
+								появившемся окне выбрать исполнителя, дату начала и дату завершения задачи. <br><br>
+								<b>Поля доступные для перетаскивания подсвечиваются красным при наведении на них курсора во
+									время перетаскивания задачи</b><br><br>
+								<b>При отсутствии списка задач (если экран не вмещает) в верхнем правом углу есть кнопка вызова
+									списка задач, добавление из которого аналогично описанному выше способу добавления
+									задач</b><br><br>
+								<b>Цвета задач:</b><br>
+								- Зеленый цвет означает день начала выполнения задачи;<br>
+								- Оранжевый цвет означает день завершения выполнения задачи;<br>
+								- Красный цвет означает что сегодня или дата завершения задачи или дата завершения задачи
+								прошла.<br>
+
+							</span></button>
+						<div class="button__burger"><span></span></div>
+			</div>
+			<!-- /Кнопки управления навигацией -->
+
+			<!-- Дата в течении текущей недели -->
+			<div class="data-navigation">
+				<div class="data data-0">01.02.2022</div>
+				<div class="data data-1">02.02.2022</div>
+				<div class="data data-2">03.02.2022</div>
+				<div class="data data-3">04.02.2022</div>
+				<div class="data data-4">05.02.2022</div>
+				<div class="data data-5">06.02.2022</div>
+				<div class="data data-6">07.02.2022</div>
+			</div>
+			<!-- /Дата в течении текущей недели -->
+
+			<!-- Область для списка исполнителей и задач -->
+			<div class="user-task"></div>
+			<!-- /Область для списка исполнителей и задач -->
+
+			<!-- Модальное окно (ПопАп) -->
+			<div class="modal__fons"></div>
+			<div id="popup" class="popup">
+				<div class="popup__body">
+					<div class="popup__content">
+						<a href="#" class="popup__close" id="popup__close">X</a>
+
+						<form name="f1" class="modal__form">
+							<span>Исполнитель:</span><br>
+							<select name="user-name" id="user">
+							</select>
+							<br>
+							<label for="start">Дата начала выполнения:</label>
+							<br>
+							<input type="date" id="startTask" name="trip-start" value="">
+							<br>
+							<label for="end">Дата окончания выполнения:</label><br>
+							<input type="date" id="endTask" name="trip-start" value="">
+							<br>
+							<input type="button" onclick="userTaskPopup()" value="ok">
+						</form>
+					</div>
+					<div class="close"></div>
+				</div>
+			</div>
+			<!-- /Модальное окно (ПопАп) -->
+
+		</div>
+		<!-- /Область задач с известным исполнителем -->
+
+		<!-- Список задач без исполнителей -->
+		<div class="backlog">
+			<form>
+				<p><input class="input-search" type="search" name="search" placeholder="Поиск">
+					<input class="input-button" type="submit" value="O">
+				</p>
+			</form>
+			<div class="backlog__task-list">
+			</div>
+		</div>
+		<!-- /Список задач без исполнителей -->
+
+	</div>
+</body>
+<script src="./app/main.js"></script>
+
+</html>
